@@ -424,7 +424,9 @@
 
 			var eventStateMap = {
 				'playerReady': 'start',
-				'onplay': 'load',
+				'onplay': function () {
+					return _this.isPlaying() ? 'play' : 'load';
+				},
 				'playing': 'play',
 				'onPauseInterfaceUpdate': 'pause',
 				'onEndedDone': 'end',
@@ -1312,15 +1314,15 @@
 				_this.getInterface().height(_this.layoutBuilder.getComponentsHeight());
 			}
 
+			// Update layout
+			this.doUpdateLayout();
+
 			// Update the playerReady flag
 			this.playerReadyFlag = true;
 			mw.log("EmbedPlayer:: Trigger: playerReady");
 			// trigger the player ready event;
 			$(this).trigger('playerReady');
 			this.triggerWidgetLoaded();
-
-			// Update layout
-			this.doUpdateLayout();
 
 			// Check if we want to block the player display
 			if (this['data-blockPlayerDisplay']) {
@@ -2319,6 +2321,8 @@
 
 			// trigger on play interface updates:
 			this.restoreComponentsHover();
+			//Unmask clipDone guard handler
+			this.shouldEndClip = true;
 			$(this).trigger('onPlayInterfaceUpdate');
 		},
 		/**
@@ -2410,6 +2414,8 @@
 			this.hideSpinner();
 			// trigger on pause interface updates
 			this.disableComponentsHover();
+			//Mask clipDone guard handler
+			this.shouldEndClip = false;
 			$(this).trigger('onPauseInterfaceUpdate');
 		},
 		/**
