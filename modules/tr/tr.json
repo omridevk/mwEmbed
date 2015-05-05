@@ -1,0 +1,78 @@
+{
+  "trControls": {
+    "dependencies": [
+      "mw.KBasePlugin"
+    ],
+    "kalturaPluginName": "trControls",
+    "messageFile": "tr.i18n.php",
+    "scripts": [
+      "resources/trControls.js"
+    ],
+    "styles": [
+      "resources/style.css"
+    ],
+    "templates": [
+      "../tr/templates/player-controls.tmpl.html"
+    ]
+  },
+  "trLocale": {
+    "dependencies": [
+      "mw.KBasePlugin"
+    ],
+    "kalturaPluginName": "trLocale",
+    "messageFile": "tr.i18n.php",
+    "scripts": [
+      "resources/trLocale.js"
+    ]
+  },
+  "trPlaylistServices": {
+    "dependencies": [
+      "mw.KBasePlugin"
+    ],
+    "scripts": [
+      "resources/trPlaylistServices.js"
+    ],
+    "kalturaPluginName": "trPlaylistServices"
+  },
+  "trSwa": {
+    "dependencies": [
+      "mw.KBasePlugin",
+      "jCarouse"
+    ],
+    "kalturaPluginName": "trSwa",
+    "scripts": [
+      "resources/trSwa.js"
+    ],
+    "templates": [
+      "../tr/templates/swa.tmpl.html"
+    ]
+  },
+  "trTitle": {
+    "dependencies": [
+      "mw.KBasePlugin"
+    ],
+    "kalturaPluginName": "trTitle",
+    "messageFile": "tr.i18n.php",
+    "scripts": [
+      "resources/trTitle.js"
+    ],
+    "styles": [
+      "resources/style.css"
+    ],
+    "templates": [
+      "../tr/templates/playlist.tmpl.html"
+    ]
+  },
+  "trTranscript": {
+    "dependencies": [
+      "mw.KBasePlugin"
+    ],
+    "kalturaPluginName": "trTranscript",
+    "scripts": [
+      "resources/trTranscript.js"
+    ],
+    "templates": [
+      "../tr/templates/transcript.tmpl.html"
+    ]
+  }
+}
