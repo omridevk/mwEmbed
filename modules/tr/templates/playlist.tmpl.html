@@ -6,6 +6,7 @@
             <div class="ri-playlistItem-content-thumb">
                 <div class="ri-playlistItem-content-thumb-image" style="background-image:url(<%=item.thumbnail.url%>);"></div>
                 <div class="ri-playlistItem-content-thumb-play"></div>
+                <div class="" style="position: absolute; color: #00FF00"><%=idx%></div>
             </div>
             <div class="ri-playlistItem-content-date" title="<%=item.createdAt%>"><%=formaters.trDateFormat(item.createdAt)%></div>
             <div class="ri-playlistItem-content-title"><%=item.title%></div>

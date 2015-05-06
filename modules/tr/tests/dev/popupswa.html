@@ -45,16 +45,15 @@
     //defaults TR
 
     var entryId = "";
-    var partnerId = 27017;
-    var uiconfId = 29277301 ; //this will come from KMS 27493391 28529602 29008071 29277301(TR)
-    var clipsToShow = 3; //amount of videos to show in playlist
+    var uiconfId = 29393161 ; //this will come from KMS 27493391 28529602 29008071 29277301(TR)
+    var partnerId= 1851191;
+    var clipsToShow = 4; //amount of videos to show in playlist
     var omniturePn = "";
     var omnitureEud = "";
     var omnitureUuid = "";
     var widgetType = "";
-    var playlistId = "1_kvvdd4ar";
+    var playlistId = "";
     var startFrom = 0;
-
 
     var hashStr = window.location.hash.substring(1);
     var jsonConfig = {};
@@ -64,9 +63,15 @@
         kWidget.log('TR: Unable to parse JSON from location.hash');
     }
 
-    partnerId = jsonConfig.pid;
-    //playlistId = jsonConfig.cid;
-    entryId = jsonConfig.mid;
+    if(jsonConfig.pid) {
+        partnerId = jsonConfig.pid;
+    }
+    if(jsonConfig.cid){
+        playlistId = jsonConfig.cid;
+    }
+    if(jsonConfig.mid) {
+        entryId = jsonConfig.mid;
+    }
     widgetType = jsonConfig.wtype;
     if(jsonConfig.startFrom){
         startFrom = jsonConfig.startFrom;
@@ -79,15 +84,13 @@
         clipsToShow = jsonConfig.clipsToShow;
     }
     //      example of override
-    //      http://localhost/html5.kaltura/mwEmbed/modules/tr/tests/dev/popup.html?#{"pid":27017,"mid":"1_1611vudr","startFrom":0,"uuid":"omnitureUser","pn":"pmniturePn","bitrate":400,"eud":"omnitureEud","wtype":"omnitureWtype"}
+    //      http://localhost/html5.kaltura/mwEmbed/modules/tr/tests/dev/popupswa.html?#{"cid":"1_gnb3yw1a","mi3d":"1_e11zckox","startFrom":0,"uuid":"omnitureUser","pn":"pmniturePn","bitrate":400,"eud":"omnitureEud","wtype":"omnitureWtype"}
     mw.setConfig('forceMobileHTML5', true);
 
-
-    kWidget.embed({
+    var embedJSON = {
         'targetId': 'kPlayer',
         'wid': '_'+partnerId,
         'uiconf_id' : uiconfId,
-        'entry_id' : entryId,
         'flashvars': {
             'ks' : '',
             'locale' : 'jp',
@@ -126,14 +129,31 @@
                 'autoPlay' : 'true',
                 'showControls': false,
                 'includeHeader': false,
+                'hideClipPoster': true,
                 'renderWhenEmpty': true,
                 'templatePath': '../tr/templates/playlist.tmpl.html',
-                'MinClips': 4
+                'paging': true,
+                'MinClips': clipsToShow,
+                'pageSize': 8,
+                'mediaItemHeight': 200,
+                'horizontalScrollItems' : clipsToShow
             }
 
 
         }
-    });
+    };
+
+    if(entryId && playlistId){
+        //selece entry
+        embedJSON.entry_id = entryId;
+    } else if (entryId){
+        embedJSON.entry_id = entryId;
+    } else {
+        embedJSON.flashvars.playlistAPI.kpl0Id = playlistId;
+    }
+
+
+    kWidget.embed(embedJSON);
 
 </script>
 </body>

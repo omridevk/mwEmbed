@@ -42,7 +42,7 @@ mw.PluginManager.add( 'trPlaylistServices', mw.KBasePlugin.extend({
 				setTimeout(function(){
 					_this.setConfig("loadedOnce",true);
 					_this.loadRelatedPlaylist();
-				},11)
+				},0)
 
 		},this));
 

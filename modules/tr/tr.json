@@ -4,7 +4,7 @@
       "mw.KBasePlugin"
     ],
     "kalturaPluginName": "trControls",
-    "messageFile": "tr.i18n.php",
+    "messageFile": "tr.i18n.json",
     "scripts": [
       "resources/trControls.js"
     ],
@@ -20,7 +20,7 @@
       "mw.KBasePlugin"
     ],
     "kalturaPluginName": "trLocale",
-    "messageFile": "tr.i18n.php",
+    "messageFile": "tr.i18n.json",
     "scripts": [
       "resources/trLocale.js"
     ]
@@ -52,7 +52,7 @@
       "mw.KBasePlugin"
     ],
     "kalturaPluginName": "trTitle",
-    "messageFile": "tr.i18n.php",
+    "messageFile": "tr.i18n.json",
     "scripts": [
       "resources/trTitle.js"
     ],

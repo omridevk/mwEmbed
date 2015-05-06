@@ -29,7 +29,6 @@ mw.PluginManager.add( 'trTitle', mw.KBaseComponent.extend({
 			this.popup = {width: 0, height: 0};
 			return ;
 		}
-
 		this.popup = {
 			width: sizes[0],
 			height: sizes[1]
@@ -77,9 +76,7 @@ mw.PluginManager.add( 'trTitle', mw.KBaseComponent.extend({
 
 
 	},
-
 	reset: function() {
-		//alert(this.getConfig("mode") + "  "+this.getConfig("contentId"));
 		if(this.getConfig("mode") == "playlist"){
 			var params = {
 				"playlistParams" : {
