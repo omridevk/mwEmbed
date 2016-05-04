@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title> DoubleClick Volume Test</title>
+
+    <script type="text/javascript" src="../../../tests/qunit/qunit-bootstrap.js"></script>
+    <script type="text/javascript" src="../../../mwEmbedLoader.php"></script>
+    <script type="text/javascript" src="../../../docs/js/doc-bootstrap.js"></script>
+</head>
+<style>
+    button {
+        margin: 4px;
+    }
+</style>
+<body>
+
+<div style="display:flex; flex-direction:column; justify-content: center; align-items: center;">
+    <h1>
+        DoubleClick Volume Change Test
+    </h1>
+    <button class="switch__button_flash">Lead With Flash</button>
+    <button class="switch__button_no_flash">Normal</button>
+    <div id="element__player" style="width: 560px; height: 395px;" itemprop="video" itemscope itemtype="http://schema.org/VideoObject"></div>
+</div>
+
+
+
+
+<script>
+
+    class DoubleClickTest {
+
+        constructor() {
+            this.buttonFlash = document.querySelector('.switch__button_flash');
+            this.buttonNoFlash = document.querySelector('.switch__button_no_flash');
+            this.player = document.querySelector('#element__player');
+            this.kWidget = kWidget;
+            this.onClickLoadJS = this.onClickLoadJS.bind(this);
+            this.onClickLoadFlash = this.onClickLoadFlash.bind(this);
+            this.onPlayerReady = this.onPlayerReady.bind(this);
+            this.embedPlayer(true);
+            this.addEventListeners();
+        }
+
+        addEventListeners() {
+            this.buttonFlash.addEventListener('click', this.onClickLoadFlash);
+            this.buttonNoFlash.addEventListener('click', this.onClickLoadJS);
+            this.kWidget.addReadyCallback(this.onPlayerReady);
+
+        }
+
+        onClickLoadFlash() {
+            this.kWidget.destroy('element__player');
+            this.embedPlayer(true);
+        }
+        embedPlayer(withFlash) {
+            this.kWidget.featureConfig({
+                "targetId": "element__player",
+                "wid": "_1491571",
+                "uiconf_id": 34432731,
+                "flashvars": {
+                    "streamerType": "auto",
+                    "doubleClick": {
+                        "adTagUrl": "http://pubads.g.doubleclick.net/gampad/ads?sz=1024x768&iu=/4654/ToggleV3/ad//catchuptv//suria&vid=365208&cmsid=556&ciu_szs=320x100&impl=s&gdfp_req=1&env=vp&output=xml_vast3&unviewed_position_start=1&url=+encodeURIComponent(window.location.href)+&description_url=+encodeURIComponent(window.location.href)+&correlator={utility.timestamp}&cust_params=TV_Shows%3DBicara2015",
+                        "plugin": true,
+                        "numRedirects": 20,
+                        "leadWithFlash": withFlash
+                    },
+                    'skipBtn':{
+                        'plugin': true,
+                        'label': "Skip this ad",
+                        'skipOffset': 5
+                    }
+                },
+                "cache_st": 1461170200,
+                "entry_id": "0_9m2z1mki"
+            });
+        }
+        onClickLoadJS() {
+            this.kWidget.destroy('element__player');
+            this.embedPlayer(true);
+        }
+
+        onPlayerReady() {
+        }
+    }
+
+
+    new DoubleClickTest();
+</script>
+
+
+</body>
+</html>
